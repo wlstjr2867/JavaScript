@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>함수</h2>
+    <script>
+        console.error("전역변수를 var로 선언")
+        var globalVar = 100;
+        function conflict1(globalVar){
+            this.globalVar = globalVar * 2;
+        }
+        console.log("conflict1() 호출전", globalVar);
+        conflict1(globalVar);
+        console.log("conflict1() 호출후", globalVar);
+
+        console.error("전역변수를 let으로 선언")
+        let globalLet = 100;
+        function conflict2(globalLet){
+            this.globalLet = globalLet * 2;
+        }
+        console.log("conflict2() 호출전", globalLet);
+        conflict2(globalLet);
+        console.log("conflict2() 호출후", globalLet);
+
+        console.error("전역변수와 지역변수 구분")
+        let globalNum = 100;
+        function betterFunc(localNum){
+            globalNum = localNum + 50;
+            localNum = localNum + 80;
+
+            console.log("함수안 globalNum="+ globalNum,
+                        "localNum="+ localNum);
+        }
+        betterFunc(globalNum);
+        // console.log("함수밖 globalNum="+ globalNum,
+        //             "localNum="+ localNum);
+        console.log("함수밖 globalNum="+ globalNum,
+                    "localNum=선언된적없음");
+    </script>
+</body>
+</html>

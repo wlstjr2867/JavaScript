@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>스프레드 연산자(Spread operator)</h2>
+    <script>
+    //es5 방식
+    var numbers = [9, 4, 7, 1];
+    let result1 = Math.min(numbers[0], numbers[1], numbers[2], numbers[3]);
+    console.log("결과1", result1);
+
+    //스프레드 연산자 사용
+    let result2 = Math.min(...numbers);
+    console.log("결과2", result2);
+
+    //객체를 포함한 배열 생성
+    var input = [
+            {name:'철수',age:10},
+            {name:'영희',age:11},
+            {name:'유겸',age:12}
+        ];
+    var maxAge = Math.max(...input.map((item) => item.age));
+    console.log('결과3(나이의최대값)', maxAge); //12
+
+    var boy = { name:'유겸', job:'초등학생'};
+    boy = {...boy, age:12};
+    console.log('결과4', boy);
+
+    boy = {...boy, name:'유비', age:50};
+    console.log('결과5', boy);
+    </script>
+</body>
+</html>
