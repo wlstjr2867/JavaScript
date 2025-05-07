@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const words = ['hello', 'world', 'javascript'];
+
+        const newArray = words.map(function(currentVal){
+                return currentVal.toUpperCase();
+        });
+        document.write("원래 배열:" + words.join(", ")+ "<br>");
+        document.write("대문자 배열:"+ newArray.join(", "));
+
+    </script>
+</body>
+</html>

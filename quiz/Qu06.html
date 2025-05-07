@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+</head>
+<body>
+    <h2>암호를 입력하라!</h2>
+    <hr>
+    <script>
+    const correctPassword = "javascript";
+    let userInput;
+
+    do {
+      userInput = prompt("암호를 입력하세요:");
+    } while (userInput !== correctPassword);
+
+    document.write("통과!");
+    </script>
+</body>
+</html>

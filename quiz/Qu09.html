@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>난수 10개 생성</h2>
+    <hr>
+    <script>
+        var plots = [];
+        for (var i=0; i<=10; i++){
+            var randomNum = Math.floor(Math.random() * 100) + 1;
+            plots.push(randomNum);
+        }
+        document.write("난수 배열:"+ plots.join(", ") + "<br> <hr>");
+
+        var max = Math.max(...plots);
+        document.write("가장 큰 수:", max , "<hr>");
+    </script>
+</body>
+</html>

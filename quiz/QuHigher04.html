@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const products = [
+        { name: 'apple', price: 1000, category: 'fruit' },
+        { name: 'banana', price: 800, category: 'fruit' },
+        { name: 'notebook', price: 20000, category: 'electronics' },
+        { name: 'mouse', price: 5000, category: 'electronics' }
+    ];
+    
+    const newArray = products
+        .filter(p => p.price >= 1000)
+        .map(p => p.name);
+
+    document.write("전체상품:<br>");
+    for(let i=0; i<products.length; i++){
+        document.write(products[i].name+ "<br>");
+    }
+    document.write("<br>1000원 이상 상품:<br>");
+    document.write(newArray.join("<br>"));
+    </script>
+</body>
+</html>

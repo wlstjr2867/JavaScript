@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const users = [
+        { name: 'Alice', age: 30 },
+        { name: 'Bob', age: 25 },
+        { name: 'Charlie', age: 35 }
+    ];
+    
+    const newArray = users.filter(function(currentVal){
+        return currentVal.age>=30;
+    });
+    document.write("원래 고객: " + users.map(user => user.name + " (" + user.age + ")").join(", ") + "<br>");
+    document.write("나이가 30 이상인 고객: " + newArray.map(user => user.name + " (" + user.age + ")").join(", "));
+    // document.write("원래 고객:"+ users.join(", ")+ "<br>");
+    // document.write("나이가 30인 이상 고객:"+ newArray.join(", "));
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //타이머 작동 확인을 위한 함수 
+        function fnOnce(){
+            alert("5초후 딱 한번만 실행됨");
+        }
+        function fnContinue(){
+            alert("3초마다 매번 실행됨");
+        }
+
+        //타이머를 제어하기 위한 전역변수 선언
+        var timerOnce, timerMode;
+
+        function fnCallAfter(flag){
+            /*
+            타이머 관련 함수를 사용할때는 내부에서 다른 함수를 호출할때 반드시
+            "함수명()"과 같이 문자열 형태로 기술해야한다. 시간은 1/1000 단위를 사용한다.
+            */
+            if(flag=="T"){
+                //5초 이후에 딱 한번 지정한 함수를 호출
+                timerOnce = window.setTimeout("fnOnce()", 5000);
+            }
+            else{
+                //3초마다 지정한 함수를 지속적으로 호출
+                timerMode = window.setInterval("fnContinue()", 3000);
+            }
+        }
+        /*
+        각 타이머 함수의 실행을 중지하고 싶을때는 참조변수를 사용하여
+        clearXX() 계열의 함수를 호출하면 된다.
+        */
+        function fnCallBreak(flag){
+            if(flag==1){
+                clearTimeout(timerOnce);
+            }
+            else{
+                clearInterval(timerMode);
+            }
+        }
+
+        /*
+        Date 내장객체를 통해 현재시간을 얻어온 후 문자열로 구성한다.
+        span 태그의 innerHTML 속성으로 시간을 화면에 표시한다.
+        */
+        function displayTime(){
+            var date = new Date();
+            var displayClock = document.getElementById("clock");
+            displayClock.innerHTML = date.getHours() +"시 "+
+                            date.getMinutes() +"분 "+
+                            date.getSeconds() +"초";
+        }
+        /*
+        1초에 한번씩 지속적으로 함수를 호출하여 디지털 시계를 구현한다.
+        지속적으로 현재시간을 가져오므로 시간이 흘러가는것처럼 보이게된다.
+        */
+        function displayTimeCall() {
+            //형식1 : 외부에 정의한 함수를 호출
+            // setInterval("displayTime()", 1000);
+
+            //형식2 : 타이머 함수 내부에 콜백함수를 직접 정의
+            setInterval(() => {
+                let date = new Date();
+                let displayClock = document.getElementById("clock");
+                displayClock.innerHTML = date.getHours() +"시 "+
+                                date.getMinutes() +"분 "+
+                                date.getSeconds() +"초";
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <h2>setInterval(), setTimeout() 함수</h2>
+
+    <h3>일정 시간후 함수실행</h3>
+    <input type="button" value="5초후함수실행"
+        onclick="fnCallAfter('T');">
+    <input type="button" value="함수호출중지"
+        onclick="fnCallBreak(1);">
+
+    <h3>일정 시간마다 함수실행</h3>
+    <input type="button" value="3초마다함수실행"
+        onclick="fnCallAfter('I');">
+    <input type="button" value="함수호출중지"
+        onclick="fnCallBreak(2);">
+
+    <h3>간단한 디지털 시계 구현하기</h3>
+    <span id="clock" style="color: red; font-size: 1.8em;
+        font-weight: bold;"></span>
+    <button type="button" onclick="displayTimeCall();">
+        디지털시계
+    </button>
+</body>
+</html>
